@@ -1,0 +1,9 @@
+
+ User-agent ; *
+ Disallow ; /private/specialpages/
+
+
+ Crawl-delay ; 10
+
+ Stemap ;  
+https://lamaisonduplacoplatre.com/sitemap.xml
