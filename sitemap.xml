@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <!-- Homepage -->
     <url>
-        <loc>https://www.yourwebsite.com/</loc>
+        <loc>https://www.lamaisonduplacoplatre.com/</loc>
         <lastmod>2023-10-15</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -10,7 +10,7 @@
 
     <!-- About Page -->
     <url>
-        <loc>https://www.yourwebsite.com/about.html</loc>
+        <loc>https://www.lamaisonduplacoplatre.com/about.html</loc>
         <lastmod>2023-10-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -18,7 +18,7 @@
 
     <!-- Services Page -->
     <url>
-        <loc>https://www.yourwebsite.com/service.html</loc>
+        <loc>https://wwwlamaisonduplacoplatre.com/service.html</loc>
         <lastmod>2023-10-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -26,7 +26,7 @@
 
     <!-- Products Page -->
     <url>
-        <loc>https://www.yourwebsite.com/produits.html</loc>
+        <loc>https://www.lamaisonduplacoplatre.com/produits.html</loc>
         <lastmod>2023-10-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -34,7 +34,7 @@
 
     <!-- Contact Page -->
     <url>
-        <loc>https://www.yourwebsite.com/contact.html</loc>
+        <loc>https://www.lamaisonduplacoplatre.com/contact.html</loc>
         <lastmod>2023-10-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -42,7 +42,7 @@
 
     <!-- Support Page -->
     <url>
-        <loc>https://www.yourwebsite.com/support.html</loc>
+        <loc>https://www.lamaisonduplacoplatre.com/support.html</loc>
         <lastmod>2023-10-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -50,7 +50,7 @@
 
     <!-- Sitemap Page -->
     <url>
-        <loc>https://www.yourwebsite.com/sitemap.html</loc>
+        <loc>https://www.lamaisonduplacoplatre.com/sitemap.html</loc>
         <lastmod>2023-10-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
