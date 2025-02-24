@@ -1,9 +1,18 @@
+User-agent: *
+Disallow: /private/specialpages/
 
- User-agent ; *
- Disallow ; /private/specialpages/
+Crawl-delay: 10
 
+Sitemap: https://lamaisonduplacoplatre.com/sitemap.xml
 
- Crawl-delay ; 10
+# Block access to specific files
+Disallow: /private/file.pdf
+Disallow: /private/file.html
 
- Stemap ;  
-https://lamaisonduplacoplatre.com/sitemap.xml
+# Allow access to specific directories
+Allow: /public/
+Allow: /images/
+
+# Block access to specific user agents (e.g., bad bots)
+User-agent: BadBot
+Disallow: /
