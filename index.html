@@ -352,212 +352,207 @@
         <script src="lib/slick/slick.min.js"></script>
         <script src="js/main.js"></script>
     </div>
-   <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notifications - La Maison du Placoplâtre</title>
+     <title>Promo Étanchéité - La Maison du Placoplâtre</title>
     <style>
-        /* Style général des notifications */
-        .lm-notif {
+        /* Bannière Promo */
+        .promo-banner {
             position: fixed;
-            width: 320px;
-            padding: 0;
-            border-radius: 8px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
-            font-family: 'Montserrat', sans-serif;
-            z-index: 10000;
-            overflow: hidden;
-            opacity: 0;
-            transform: scale(0.9);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-            cursor: pointer;
-            border: 1px solid rgba(0,0,0,0.1);
-        }
-        
-        /* Positions */
-        .lm-notif--tr { top: 25px; right: 25px; }
-        .lm-notif--bl { bottom: 25px; left: 25px; }
-        
-        /* En-tête */
-        .lm-notif__header {
-            padding: 15px 20px;
-            color: white;
-            display: flex;
-            align-items: center;
-            font-weight: 600;
-        }
-        
-        /* Corps */
-        .lm-notif__body {
-            padding: 15px 20px;
+            bottom: -300px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 800px;
             background: white;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 -5px 30px rgba(0,0,0,0.15);
+            z-index: 9999;
+            display: flex;
+            overflow: hidden;
+            transition: bottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid #e0e0e0;
+        }
+        
+        .promo-banner--visible {
+            bottom: 0;
+        }
+        
+        /* Photo Produit */
+        .promo-banner__photo {
+            width: 40%;
+            background: #f5f5f5;
+            background-image: url('https://images.unsplash.com/photo-1622372738946-62e02505feb3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Contenu */
+        .promo-banner__content {
+            width: 60%;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .promo-banner__title {
+            color: #2f2c9b;
+            font-size: 22px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .promo-banner__subtitle {
+            color: #DFB163;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .promo-banner__text {
             color: #555;
             font-size: 14px;
             line-height: 1.5;
+            margin-bottom: 20px;
         }
         
-        /* Bouton de fermeture */
-        .lm-notif__close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(0,0,0,0.2);
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* Boutons */
+        .promo-banner__cta {
+            display: inline-block;
+            background: #DFB163;
             color: white;
-            cursor: pointer;
-            z-index: 2;
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .promo-banner__cta:hover {
+            background: #d4a657;
+            transform: translateY(-2px);
+        }
+        
+        .promo-banner__close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
             border: none;
-        }
-        
-        /* Icônes */
-        .lm-notif__icon {
-            margin-right: 12px;
             font-size: 20px;
+            color: #999;
+            cursor: pointer;
         }
         
-        /* Styles spécifiques */
-        .lm-notif--etancheite .lm-notif__header {
-            background: linear-gradient(135deg, #00a8e1 0%, #0077b6 100%);
+        /* Badge Promo */
+        .promo-banner__badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: #e74c3c;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 3px 10px rgba(231, 76, 60, 0.3);
         }
         
-        .lm-notif--peinture .lm-notif__header {
-            background: linear-gradient(135deg, #DFB163 0%, #d4a657 100%);
-        }
-        
-        /* Animation */
-        .lm-notif--show {
-            opacity: 1;
-            transform: scale(1);
-        }
-        
-        /* Mobile */
+        /* Responsive */
         @media (max-width: 768px) {
-            .lm-notif {
-                width: 90%;
-                max-width: 320px;
+            .promo-banner {
+                flex-direction: column;
+                width: 100%;
+                border-radius: 0;
             }
             
-            .lm-notif--tr, .lm-notif--bl {
-                left: 50%;
-                right: auto;
-                transform: translateX(-50%) scale(0.9);
+            .promo-banner__photo {
+                width: 100%;
+                height: 150px;
             }
             
-            .lm-notif--show {
-                transform: translateX(-50%) scale(1);
+            .promo-banner__content {
+                width: 100%;
+                padding: 15px;
+            }
+            
+            .promo-banner__title {
+                font-size: 18px;
+            }
+            
+            .promo-banner__badge {
+                top: 10px;
+                right: 10px;
+                font-size: 12px;
             }
         }
     </style>
 </head>
 <body>
 
-<!-- Notification Étanchéité -->
-<div class="lm-notif lm-notif--tr lm-notif--etancheite" id="notifEtancheite">
-    <button class="lm-notif__close" aria-label="Fermer">&times;</button>
-    <div class="lm-notif__header">
-        <span class="lm-notif__icon">🛡️</span>
-        Solutions Étanchéité Expertes
-    </div>
-    <div class="lm-notif__body">
-        Découvrez nos traitements haute performance pour salles d'eau. <strong>Garantie 10 ans</strong> contre les infiltrations!
-    </div>
-</div>
-
-<!-- Notification Peinture -->
-<div class="lm-notif lm-notif--bl lm-notif--peinture" id="notifPeinture">
-    <button class="lm-notif__close" aria-label="Fermer">&times;</button>
-    <div class="lm-notif__header">
-        <span class="lm-notif__icon">🎨</span>
-        Peinture Technique Professionnelle
-    </div>
-    <div class="lm-notif__body">
-        Nos peintures spéciales masquent les défauts et résistent à l'humidité. <strong>Offre spéciale</strong> en cours!
+<!-- Bannière Promo Étanchéité -->
+<div class="promo-banner" id="etancheitePromo">
+    <div class="promo-banner__photo"></div>
+    <div class="promo-banner__content">
+        <button class="promo-banner__close" id="closePromo">&times;</button>
+        <span class="promo-banner__badge">STOP PROMO</span>
+        <h3 class="promo-banner__title">Solutions Étanchéité Premium</h3>
+        <span class="promo-banner__subtitle">Offre exceptionnelle -30%</span>
+        <p class="promo-banner__text">Nos membranes d'étanchéité haute performance pour salles de bains et terrasses. Garantie décennale incluse!</p>
+        <a href="/promo-etancheite" class="promo-banner__cta">Voir l'offre</a>
     </div>
 </div>
 
 <script>
     // Configuration
-    const notificationsConfig = {
-        etancheite: {
-            id: 'notifEtancheite',
-            url: '/solutions-etancheite', // Lien vers votre page étanchéité
-            delay: 4000, // 4 secondes
-            cookieName: 'lm_notif_etancheite',
-            cookieExpiry: 86400 // 1 jour en secondes
-        },
-        peinture: {
-            id: 'notifPeinture',
-            url: '/peinture-speciale', // Lien vers votre page peinture
-            delay: 7000, // 7 secondes
-            cookieName: 'lm_notif_peinture',
-            cookieExpiry: 86400
-        }
+    const promoConfig = {
+        cookieName: 'etancheite_promo_closed',
+        scrollTrigger: 300, // Afficher après 300px de scroll
+        reappearDelay: 86400 // Réapparition après 24h (en secondes)
     };
-
-    // Fonctions utilitaires
-    function getCookie(name) {
-        const cookies = `; ${document.cookie}`;
-        const value = cookies.split(`; ${name}=`);
-        if (value.length === 2) return value.pop().split(';').shift();
+    
+    // Éléments DOM
+    const promoBanner = document.getElementById('etancheitePromo');
+    const closeButton = document.getElementById('closePromo');
+    
+    // Vérifier si déjà fermé
+    function checkClosed() {
+        return document.cookie.includes(promoConfig.cookieName);
     }
-
-    function setCookie(name, value, expiry) {
-        const date = new Date();
-        date.setTime(date.getTime() + (expiry * 1000));
-        document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
+    
+    // Gestion du scroll
+    function handleScroll() {
+        if (checkClosed()) return;
+        
+        if (window.scrollY > promoConfig.scrollTrigger && !promoBanner.classList.contains('promo-banner--visible')) {
+            promoBanner.classList.add('promo-banner--visible');
+            window.removeEventListener('scroll', handleScroll);
+        }
     }
-
-    // Gestion des notifications
-    function initNotifications() {
-        Object.values(notificationsConfig).forEach(config => {
-            // Vérifier le cookie
-            if (getCookie(config.cookieName)) return;
-            
-            const notif = document.getElementById(config.id);
-            if (!notif) return;
-            
-            // Clic sur la notification
-            notif.addEventListener('click', (e) => {
-                if (e.target.classList.contains('lm-notif__close')) return;
-                window.location.href = config.url;
-            });
-            
-            // Bouton fermer
-            notif.querySelector('.lm-notif__close').addEventListener('click', (e) => {
-                e.stopPropagation();
-                notif.classList.remove('lm-notif--show');
-                setCookie(config.cookieName, 'closed', config.cookieExpiry);
-            });
-            
-            // Afficher avec délai
-            setTimeout(() => {
-                notif.classList.add('lm-notif--show');
-            }, config.delay);
-        });
+    
+    // Fermer la bannière
+    function closeBanner() {
+        promoBanner.classList.remove('promo-banner--visible');
+        document.cookie = `${promoConfig.cookieName}=true; max-age=${promoConfig.reappearDelay}; path=/`;
     }
-
-    // Démarrer au chargement
-    document.addEventListener('DOMContentLoaded', initNotifications);
-
-    // Option: Fermer après 15s si pas d'interaction
-    setTimeout(() => {
-        document.querySelectorAll('.lm-notif').forEach(notif => {
-            if (notif.classList.contains('lm-notif--show') && !getCookie(notif.id + '_closed')) {
-                notif.classList.remove('lm-notif--show');
+    
+    // Initialisation
+    if (!checkClosed()) {
+        window.addEventListener('scroll', handleScroll);
+        closeButton.addEventListener('click', closeBanner);
+        
+        // Afficher après 30s si pas de scroll
+        setTimeout(() => {
+            if (window.scrollY < promoConfig.scrollTrigger && !checkClosed()) {
+                promoBanner.classList.add('promo-banner--visible');
+                window.removeEventListener('scroll', handleScroll);
             }
-        });
-    }, 15000);
+        }, 30000);
+    }
+    
+    // Lien photo
+    document.querySelector('.promo-banner__photo').addEventListener('click', function() {
+        window.location.href = '/promo-etancheite';
+    });
 </script>
-
-</body>
-</html>
 
 </body>
 </html>
