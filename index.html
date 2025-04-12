@@ -374,13 +374,15 @@
             transition: transform 0.6s ease-out;
             font-family: 'Montserrat', sans-serif;
             border-left: 5px solid #e74c3c;
+            opacity: 0; /* Added for better transition */
         }
         
         .lm-promo-banner--visible {
             transform: translateX(0);
+            opacity: 1; /* Added for better transition */
         }
         
-        /* En-tête */
+        /* Rest of your CSS remains the same */
         .lm-promo-header {
             background: linear-gradient(135deg, #2f2c9b 0%, #252531 100%);
             padding: 15px;
@@ -406,7 +408,6 @@
             font-weight: 700;
         }
         
-        /* Corps */
         .lm-promo-body {
             padding: 15px;
         }
@@ -429,7 +430,6 @@
             margin-bottom: 15px;
         }
         
-        /* Compte à rebours */
         .lm-promo-countdown {
             background: #f9f9f9;
             padding: 8px;
@@ -445,7 +445,6 @@
             font-size: 15px;
         }
         
-        /* Boutons */
         .lm-promo-cta {
             display: block;
             background: #DFB163;
@@ -475,6 +474,7 @@
         }
     </style>
 
+
 <!-- Bannière Promo -->
 <div class="lm-promo-banner" id="lmPromo">
     <div class="lm-promo-header">
@@ -494,39 +494,93 @@
 </div>
 
 <script>
+    // Debugging function
+    function debugLog(message) {
+        console.log('[Promo Banner Debug] ' + message);
+    }
+
     // Configuration
     const config = {
-        imagePath: 'img/roof-etancheite.jpg', // Chemin relatif depuis HTML
-        countdownHours: 2, // Durée du compte à rebours
+        imagePath: 'img/roof-etancheite.jpg',
+        countdownHours: 2,
         cookieName: 'lm_promo_toiture_closed',
-        showDelay: 4000 // Délai avant apparition (ms)
+        showDelay: 4000,
+        debug: true // Set to false in production
     };
 
-    // Initialisation
-    document.addEventListener('DOMContentLoaded', function() {
-        const promo = document.getElementById('lmPromo');
-        const closeBtn = document.getElementById('lmPromoClose');
+    // Check if elements exist
+    const promo = document.getElementById('lmPromo');
+    const closeBtn = document.getElementById('lmPromoClose');
+    
+    if (!promo || !closeBtn) {
+        debugLog('Error: Required elements not found in DOM');
+        if (!promo) debugLog('Missing element: #lmPromo');
+        if (!closeBtn) debugLog('Missing element: #lmPromoClose');
+    } else {
+        debugLog('All required elements found');
+    }
+
+    // Initialize when DOM is fully loaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initBanner);
+        debugLog('Waiting for DOM to load');
+    } else {
+        debugLog('DOM already loaded, initializing immediately');
+        initBanner();
+    }
+
+    function initBanner() {
+        debugLog('Initializing banner...');
         
-        // Vérifier cookie
-        if (document.cookie.includes(config.cookieName)) return;
-        
-        // Démarrer compte à rebours
+        // Verify cookie
+        const cookieValue = document.cookie.split('; ').find(row => row.startsWith(config.cookieName));
+        if (cookieValue) {
+            debugLog('Banner was previously closed (cookie found)');
+            return;
+        }
+
+        // Start countdown
         startCountdown(config.countdownHours);
         
-        // Afficher après délai
+        // Show banner after delay
         setTimeout(() => {
-            promo.classList.add('lm-promo-banner--visible');
+            debugLog('Showing banner after delay');
+            if (promo) {
+                promo.classList.add('lm-promo-banner--visible');
+                
+                // Fallback check
+                setTimeout(() => {
+                    if (!promo.classList.contains('lm-promo-banner--visible')) {
+                        debugLog('Fallback activation - adding inline styles');
+                        promo.style.transform = 'translateX(0)';
+                        promo.style.opacity = '1';
+                    }
+                }, 1000);
+            }
         }, config.showDelay);
-        
-        // Fermeture
-        closeBtn.addEventListener('click', function() {
-            promo.classList.remove('lm-promo-banner--visible');
-            document.cookie = `${config.cookieName}=true; max-age=86400`; // 24h
-        });
-    });
 
-    // Compte à rebours
+        // Close button event
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                debugLog('Close button clicked');
+                if (promo) {
+                    promo.classList.remove('lm-promo-banner--visible');
+                    document.cookie = `${config.cookieName}=true; max-age=86400; path=/`;
+                    debugLog('Cookie set to prevent future shows');
+                    
+                    // Complete removal after animation
+                    setTimeout(() => {
+                        promo.style.display = 'none';
+                    }, 600);
+                }
+            });
+        }
+    }
+
+    // Countdown function
     function startCountdown(hours) {
+        debugLog(`Starting countdown for ${hours} hours`);
+        
         let endTime = new Date();
         endTime.setHours(endTime.getHours() + hours);
         
@@ -536,7 +590,12 @@
             
             if (diff <= 0) {
                 clearInterval(timer);
-                document.getElementById('countdown').textContent = "OFFRE TERMINÉE";
+                const countdownEl = document.getElementById('countdown');
+                if (countdownEl) {
+                    countdownEl.textContent = "OFFRE TERMINÉE";
+                    countdownEl.style.color = "#ff0000";
+                }
+                debugLog('Countdown finished');
                 return;
             }
             
@@ -544,10 +603,22 @@
             const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const s = Math.floor((diff % (1000 * 60)) / 1000);
             
-            document.getElementById('countdown').textContent = 
-                `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+            const countdownEl = document.getElementById('countdown');
+            if (countdownEl) {
+                countdownEl.textContent = 
+                    `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+            }
         }, 1000);
     }
+
+    // Fallback initialization after 8 seconds
+    setTimeout(() => {
+        if (promo && !promo.classList.contains('lm-promo-banner--visible') && 
+            !document.cookie.split('; ').find(row => row.startsWith(config.cookieName))) {
+            debugLog('Fallback activation after timeout');
+            promo.classList.add('lm-promo-banner--visible');
+        }
+    }, 8000);
 </script>
 
 
