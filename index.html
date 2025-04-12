@@ -351,212 +351,189 @@
         <script src="lib/counterup/counterup.min.js"></script>
         <script src="lib/slick/slick.min.js"></script>
         <script src="js/main.js"></script>
-    </div>
-     <title>Promo Étanchéité - La Maison du Placoplâtre</title>
+    </div><!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Étanchéité</title>
     <style>
-        /* Bannière Promo */
-        .promo-banner {
+        /* Mini Bannière Notification */
+        .mini-promo {
             position: fixed;
-            bottom: -300px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 800px;
+            bottom: 20px;
+            left: 20px;
+            width: 280px;
             background: white;
-            border-radius: 12px 12px 0 0;
-            box-shadow: 0 -5px 30px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             z-index: 9999;
-            display: flex;
             overflow: hidden;
-            transition: bottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid #e0e0e0;
+            transform: translateX(-150%);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            border-left: 4px solid #e74c3c;
+            font-family: 'Arial', sans-serif;
         }
         
-        .promo-banner--visible {
-            bottom: 0;
+        .mini-promo--visible {
+            transform: translateX(0);
         }
         
-        /* Photo Produit */
-        .promo-banner__photo {
-            width: 40%;
-            background: #f5f5f5;
-            background-image: url('https://cdn.pixabay.com/photo/2017/08/07/18/04/roof-2606330_1280.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        /* Contenu */
-        .promo-banner__content {
-            width: 60%;
-            padding: 20px;
+        /* En-tête */
+        .mini-promo__header {
+            background: #f8f8f8;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
             position: relative;
         }
         
-        .promo-banner__title {
-            color: #2f2c9b;
-            font-size: 22px;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        
-        .promo-banner__subtitle {
-            color: #DFB163;
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            display: block;
-        }
-        
-        .promo-banner__text {
-            color: #555;
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-        
-        /* Boutons */
-        .promo-banner__cta {
-            display: inline-block;
-            background: #DFB163;
+        .mini-promo__badge {
+            background: #e74c3c;
             color: white;
-            padding: 10px 25px;
-            border-radius: 5px;
-            text-decoration: none;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        .mini-promo__title {
+            font-size: 14px;
             font-weight: 600;
-            transition: all 0.3s;
+            color: #2f2c9b;
+            margin: 0;
         }
         
-        .promo-banner__cta:hover {
-            background: #d4a657;
-            transform: translateY(-2px);
-        }
-        
-        .promo-banner__close {
+        .mini-promo__close {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            right: 10px;
             background: none;
             border: none;
-            font-size: 20px;
+            font-size: 16px;
             color: #999;
             cursor: pointer;
         }
         
-        /* Badge Promo */
-        .promo-banner__badge {
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            background: #e74c3c;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 14px;
-            box-shadow: 0 3px 10px rgba(231, 76, 60, 0.3);
+        /* Corps */
+        .mini-promo__content {
+            padding: 15px;
+            position: relative;
         }
         
-        /* Responsive */
-        @media (max-width: 768px) {
-            .promo-banner {
-                flex-direction: column;
-                width: 100%;
-                border-radius: 0;
-            }
-            
-            .promo-banner__photo {
-                width: 100%;
-                height: 150px;
-            }
-            
-            .promo-banner__content {
-                width: 100%;
-                padding: 15px;
-            }
-            
-            .promo-banner__title {
-                font-size: 18px;
-            }
-            
-            .promo-banner__badge {
-                top: 10px;
-                right: 10px;
-                font-size: 12px;
+        .mini-promo__text {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+        
+        .mini-promo__cta {
+            display: inline-block;
+            background: #DFB163;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .mini-promo__cta:hover {
+            background: #d4a657;
+        }
+        
+        /* Photo miniature */
+        .mini-promo__thumb {
+            position: absolute;
+            right: 15px;
+            top: -25px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #f5f5f5 url('https://cdn.pixabay.com/photo/2017/08/07/18/04/roof-2606330_1280.jpg;)
+            border: 3px solid white;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* Mobile */
+        @media (max-width: 480px) {
+            .mini-promo {
+                width: 90%;
+                max-width: 280px;
+                left: 10px;
+                bottom: 10px;
             }
         }
     </style>
-</head>
-<body>
 
-<!-- Bannière Promo Étanchéité -->
-<div class="promo-banner" id="etancheitePromo">
-    <div class="promo-banner__photo"></div>
-    <div class="promo-banner__content">
-        <button class="promo-banner__close" id="closePromo">&times;</button>
-        
-        <h3 class="promo-banner__title">Solutions Étanchéité Premium</h3>
-        <span class="promo-banner__subtitle">Offre exceptionnelle -30%</span>
-        <p class="promo-banner__text">Nos membranes d'étanchéité haute performance pour salles de bains et terrasses. Garantie décennale incluse!</p>
-        <a href="/promo-etancheite" class="promo-banner__cta">Voir l'offre</a>
+<!-- Mini Bannière Notification -->
+<div class="mini-promo" id="miniPromo">
+    <div class="mini-promo__header">
+       
+        <h3 class="mini-promo__title">Étanchéité Premium</h3>
+        <button class="mini-promo__close">&times;</button>
+    </div>
+    <div class="mini-promo__content">
+        <div class="mini-promo__thumb"></div>
+        <p class="mini-promo__text">Profitez de -30% sur nos solutions étanches cette semaine seulement!</p>
+        <a href="/promo-etancheite" class="mini-promo__cta">Voir l'offre</a>
     </div>
 </div>
 
 <script>
     // Configuration
-    const promoConfig = {
-        cookieName: 'etancheite_promo_closed',
-        scrollTrigger: 300, // Afficher après 300px de scroll
-        reappearDelay: 86400 // Réapparition après 24h (en secondes)
+    const miniPromoConfig = {
+        cookieName: 'mini_etancheite_promo_closed',
+        scrollTrigger: 200, // Afficher après 200px de scroll
+        reappearDelay: 86400 // 24h avant réapparition
     };
     
-    // Éléments DOM
-    const promoBanner = document.getElementById('etancheitePromo');
-    const closeButton = document.getElementById('closePromo');
+    // Éléments
+    const miniPromo = document.getElementById('miniPromo');
+    const closeBtn = document.querySelector('.mini-promo__close');
     
-    // Vérifier si déjà fermé
-    function checkClosed() {
-        return document.cookie.includes(promoConfig.cookieName);
+    // Vérifier cookie
+    function isClosed() {
+        return document.cookie.includes(miniPromoConfig.cookieName);
     }
     
-    // Gestion du scroll
-    function handleScroll() {
-        if (checkClosed()) return;
-        
-        if (window.scrollY > promoConfig.scrollTrigger && !promoBanner.classList.contains('promo-banner--visible')) {
-            promoBanner.classList.add('promo-banner--visible');
-            window.removeEventListener('scroll', handleScroll);
+    // Afficher
+    function showMiniPromo() {
+        if (!isClosed()) {
+            setTimeout(() => {
+                miniPromo.classList.add('mini-promo--visible');
+            }, 3000); // Délai avant apparition
         }
     }
     
-    // Fermer la bannière
-    function closeBanner() {
-        promoBanner.classList.remove('promo-banner--visible');
-        document.cookie = `${promoConfig.cookieName}=true; max-age=${promoConfig.reappearDelay}; path=/`;
+    // Fermer
+    function closeMiniPromo() {
+        miniPromo.classList.remove('mini-promo--visible');
+        document.cookie = `${miniPromoConfig.cookieName}=true; max-age=${miniPromoConfig.reappearDelay}; path=/`;
     }
+    
+    // Gestion scroll
+    window.addEventListener('scroll', function() {
+        if (!isClosed() && window.scrollY > miniPromoConfig.scrollTrigger) {
+            miniPromo.classList.add('mini-promo--visible');
+            window.removeEventListener('scroll', this);
+        }
+    });
     
     // Initialisation
-    if (!checkClosed()) {
-        window.addEventListener('scroll', handleScroll);
-        closeButton.addEventListener('click', closeBanner);
-        
-        // Afficher après 30s si pas de scroll
-        setTimeout(() => {
-            if (window.scrollY < promoConfig.scrollTrigger && !checkClosed()) {
-                promoBanner.classList.add('promo-banner--visible');
-                window.removeEventListener('scroll', handleScroll);
-            }
-        }, 30000);
-    }
-    
-    // Lien photo
-    document.querySelector('.promo-banner__photo').addEventListener('click', function() {
+    closeBtn.addEventListener('click', closeMiniPromo);
+    document.querySelector('.mini-promo__thumb').addEventListener('click', function() {
         window.location.href = '/promo-etancheite';
     });
+    
+    // Démarrer
+    if (!isClosed()) {
+        showMiniPromo();
+    }
 </script>
 
-</body>
-</html>
-  
 
 
 
