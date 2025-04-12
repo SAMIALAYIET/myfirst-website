@@ -351,189 +351,204 @@
         <script src="lib/counterup/counterup.min.js"></script>
         <script src="lib/slick/slick.min.js"></script>
         <script src="js/main.js"></script>
-    </div><!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notification Étanchéité</title>
+    </div>
+  
+    <title>Promo Étanchéité Toiture</title>
     <style>
-        /* Mini Bannière Notification */
-        .mini-promo {
+        /* Bannière Style Pro */
+        .lm-promo-banner {
             position: fixed;
             bottom: 20px;
-           right: 20px;
-            width: 280px;
+            left: 20px;
+            width: 320px;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            z-index: 9999;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+            z-index: 10000;
             overflow: hidden;
-            transform: translateX(-150%);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-            border-left: 4px solid #e74c3c;
-            font-family: 'Arial', sans-serif;
+            transform: translateX(-120%);
+            transition: transform 0.6s ease-out;
+            font-family: 'Montserrat', sans-serif;
+            border-left: 5px solid #e74c3c;
         }
         
-        .mini-promo--visible {
+        .lm-promo-banner--visible {
             transform: translateX(0);
         }
         
         /* En-tête */
-        .mini-promo__header {
-            background: #f8f8f8;
-            padding: 12px 15px;
-            display: flex;
-            align-items: center;
+        .lm-promo-header {
+            background: linear-gradient(135deg, #2f2c9b 0%, #252531 100%);
+            padding: 15px;
+            color: white;
             position: relative;
         }
         
-        .mini-promo__badge {
+        .lm-promo-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
             background: #e74c3c;
             color: white;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 11px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: bold;
-            margin-right: 8px;
         }
         
-        .mini-promo__title {
-            font-size: 14px;
-            font-weight: 600;
-            color: #2f2c9b;
-            margin: 0;
-        }
-        
-        .mini-promo__close {
-            position: absolute;
-            right: 10px;
-            background: none;
-            border: none;
-            font-size: 16px;
-            color: #999;
-            cursor: pointer;
+        .lm-promo-title {
+            font-size: 18px;
+            margin: 5px 0 0;
+            font-weight: 700;
         }
         
         /* Corps */
-        .mini-promo__content {
+        .lm-promo-body {
             padding: 15px;
-            position: relative;
         }
         
-        .mini-promo__text {
+        .lm-promo-image {
+            width: 100%;
+            height: 120px;
+            border-radius: 6px;
+            background: #f5f5f5 url('img/roof-etancheite.jpg') center/cover;
+            margin-bottom: 12px;
+            border: 2px solid white;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+        
+        .lm-promo-desc {
             font-size: 13px;
             color: #555;
-            line-height: 1.4;
-            margin-bottom: 12px;
+            line-height: 1.5;
+            margin-bottom: 15px;
         }
         
-        .mini-promo__cta {
-            display: inline-block;
+        /* Compte à rebours */
+        .lm-promo-countdown {
+            background: #f9f9f9;
+            padding: 8px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 13px;
+        }
+        
+        .lm-promo-timer {
+            color: #e74c3c;
+            font-weight: 700;
+            font-size: 15px;
+        }
+        
+        /* Boutons */
+        .lm-promo-cta {
+            display: block;
             background: #DFB163;
             color: white;
-            padding: 6px 15px;
-            border-radius: 4px;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
             text-decoration: none;
-            font-size: 12px;
             font-weight: 600;
-            transition: background 0.3s;
+            transition: all 0.3s;
         }
         
-        .mini-promo__cta:hover {
-            background: #d4a657;
-        }
-        
-        /* Photo miniature */
-        .mini-promo__thumb {
+        .lm-promo-close {
             position: absolute;
-            right: 15px;
-            top: -25px;
-            width: 50px;
-            height: 50px;
+            top: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.2);
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
-            background: #f5f5f5 url('https://cdn.pixabay.com/photo/2017/08/07/18/04/roof-2606330_1280.jpg;)
-            border: 3px solid white;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-        
-        /* Mobile */
-        @media (max-width: 480px) {
-            .mini-promo {
-                width: 90%;
-                max-width: 280px;
-                left: 10px;
-                bottom: 10px;
-            }
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            border: none;
         }
     </style>
+</head>
+<body>
 
-<!-- Mini Bannière Notification -->
-<div class="mini-promo" id="miniPromo">
-    <div class="mini-promo__header">
-       
-        <h3 class="mini-promo__title">Étanchéité Premium</h3>
-        <button class="mini-promo__close">&times;</button>
+<!-- Bannière Promo -->
+<div class="lm-promo-banner" id="lmPromo">
+    <div class="lm-promo-header">
+        <button class="lm-promo-close" id="lmPromoClose">&times;</button>
+        <span class="lm-promo-badge">EXCLUSIF</span>
+        <h3 class="lm-promo-title">Étanchéité Toiture</h3>
     </div>
-    <div class="mini-promo__content">
-        <div class="mini-promo__thumb"></div>
-        <p class="mini-promo__text">Profitez de -30% sur nos solutions étanches cette semaine seulement!</p>
-        <a href="/promo-etancheite" class="mini-promo__cta">Tel:+ 216 93 916 561</a>
+    <div class="lm-promo-body">
+        <div class="lm-promo-image" id="promoImage" onclick="window.location.href='/promo-toiture'"></div>
+        <p class="lm-promo-desc">Solution complète d'étanchéité pour toiture plate. <strong>Garantie 10 ans</strong> avec pose par nos experts certifiés.</p>
+        <div class="lm-promo-countdown">
+            <div>Offre spéciale se termine dans:</div>
+            <div class="lm-promo-timer" id="countdown">02:00:00</div>
+        </div>
+        <a href="/promo-toiture" class="lm-promo-cta">DEMANDER UN DEVIS</a>
     </div>
 </div>
 
 <script>
     // Configuration
-    const miniPromoConfig = {
-        cookieName: 'mini_etancheite_promo_closed',
-        scrollTrigger: 200, // Afficher après 200px de scroll
-        reappearDelay: 86400 // 24h avant réapparition
+    const config = {
+        imagePath: 'img/roof-etancheite.jpg', // Chemin relatif depuis HTML
+        countdownHours: 2, // Durée du compte à rebours
+        cookieName: 'lm_promo_toiture_closed',
+        showDelay: 4000 // Délai avant apparition (ms)
     };
-    
-    // Éléments
-    const miniPromo = document.getElementById('miniPromo');
-    const closeBtn = document.querySelector('.mini-promo__close');
-    
-    // Vérifier cookie
-    function isClosed() {
-        return document.cookie.includes(miniPromoConfig.cookieName);
-    }
-    
-    // Afficher
-    function showMiniPromo() {
-        if (!isClosed()) {
-            setTimeout(() => {
-                miniPromo.classList.add('mini-promo--visible');
-            }, 3000); // Délai avant apparition
-        }
-    }
 
-    
-    // Fermer
-    function closeMiniPromo() {
-        miniPromo.classList.remove('mini-promo--visible');
-        document.cookie = `${miniPromoConfig.cookieName}=true; max-age=${miniPromoConfig.reappearDelay}; path=/`;
-    }
-    
-    // Gestion scroll
-    window.addEventListener('scroll', function() {
-        if (!isClosed() && window.scrollY > miniPromoConfig.scrollTrigger) {
-            miniPromo.classList.add('mini-promo--visible');
-            window.removeEventListener('scroll', this);
-        }
-    });
-    
     // Initialisation
-    closeBtn.addEventListener('click', closeMiniPromo);
-    document.querySelector('.mini-promo__thumb').addEventListener('click', function() {
-        window.location.href = '/promo-etancheite';
+    document.addEventListener('DOMContentLoaded', function() {
+        const promo = document.getElementById('lmPromo');
+        const closeBtn = document.getElementById('lmPromoClose');
+        
+        // Vérifier cookie
+        if (document.cookie.includes(config.cookieName)) return;
+        
+        // Démarrer compte à rebours
+        startCountdown(config.countdownHours);
+        
+        // Afficher après délai
+        setTimeout(() => {
+            promo.classList.add('lm-promo-banner--visible');
+        }, config.showDelay);
+        
+        // Fermeture
+        closeBtn.addEventListener('click', function() {
+            promo.classList.remove('lm-promo-banner--visible');
+            document.cookie = `${config.cookieName}=true; max-age=86400`; // 24h
+        });
     });
-    
-    // Démarrer
-    if (!isClosed()) {
-        showMiniPromo();
+
+    // Compte à rebours
+    function startCountdown(hours) {
+        let endTime = new Date();
+        endTime.setHours(endTime.getHours() + hours);
+        
+        const timer = setInterval(function() {
+            const now = new Date();
+            const diff = endTime - now;
+            
+            if (diff <= 0) {
+                clearInterval(timer);
+                document.getElementById('countdown').textContent = "OFFRE TERMINÉE";
+                return;
+            }
+            
+            const h = Math.floor(diff / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown').textContent = 
+                `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        }, 1000);
     }
 </script>
+</body>
+</html>
 
 
 
