@@ -352,6 +352,169 @@
         <script src="lib/slick/slick.min.js"></script>
         <script src="js/main.js"></script>
     </div>
+    <title>Notifications - La Maison du Placoplâtre</title>
+    <style>
+        /* Style des notifications */
+        .lm-notification {
+            position: fixed;
+            width: 300px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            font-family: 'Arial', sans-serif;
+            z-index: 1000;
+            display: flex;
+            align-items: flex-start;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            background: white;
+            border-left: 5px solid;
+        }
+        
+        /* Positionnement */
+        .lm-notification.top-right {
+            top: 20px;
+            right: 20px;
+            border-left-color: #DFB163; /* Couleur primaire de votre site */
+        }
+        
+        .lm-notification.bottom-left {
+            bottom: 20px;
+            left: 20px;
+            border-left-color: #2f2c9b; /* Couleur Hostinger pour différenciation */
+        }
+        
+        /* Icônes */
+        .lm-notification-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        /* Contenu */
+        .lm-notification-content {
+            flex-grow: 1;
+        }
+        
+        .lm-notification-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #252531; /* Couleur secondaire de votre site */
+        }
+        
+        .lm-notification-message {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Bouton de fermeture */
+        .lm-notification-close {
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            color: #999;
+            margin-left: 10px;
+        }
+        
+        /* Visibilité */
+        .lm-notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .lm-notification {
+                width: calc(100% - 40px);
+                max-width: 300px;
+            }
+        }
+    </style>
+
+
+<!-- Code des notifications -->
+<div class="lm-notification top-right" id="etancheiteNotification">
+    <div class="lm-notification-icon">🛡️</div>
+    <div class="lm-notification-content">
+        <div class="lm-notification-title">Solution Étanchéité</div>
+        <div class="lm-notification-message">Découvrez nos traitements étanches pour salles de bains et cuisines. Garantie 10 ans!</div>
+    </div>
+    <button class="lm-notification-close">&times;</button>
+</div>
+
+<div class="lm-notification bottom-left" id="peintureNotification">
+    <div class="lm-notification-icon">🎨</div>
+    <div class="lm-notification-content">
+        <div class="lm-notification-title">Peinture Spéciale Placoplâtre</div>
+        <div class="lm-notification-message">Nos peintures techniques masquent les imperfections et durent 2x plus longtemps.</div>
+    </div>
+    <button class="lm-notification-close">&times;</button>
+</div>
+
+<script>
+    // Fonction pour gérer les notifications
+    function initNotifications() {
+        // Sélectionner toutes les notifications
+        const notifications = document.querySelectorAll('.lm-notification');
+        const closeButtons = document.querySelectorAll('.lm-notification-close');
+        
+        // Afficher les notifications avec délai
+        setTimeout(() => {
+            document.getElementById('etancheiteNotification').classList.add('show');
+        }, 3000);
+        
+        setTimeout(() => {
+            document.getElementById('peintureNotification').classList.add('show');
+        }, 6000);
+        
+        // Fermer les notifications
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                this.closest('.lm-notification').classList.remove('show');
+                
+                // Option: Stocker en cookie pour ne pas réafficher
+                const notificationId = this.closest('.lm-notification').id;
+                document.cookie = `${notificationId}=closed; max-age=86400`; // 1 jour
+            });
+        });
+        
+        // Vérifier les cookies au chargement
+        notifications.forEach(notification => {
+            if (document.cookie.includes(`${notification.id}=closed`)) {
+                notification.style.display = 'none';
+            }
+        });
+    }
+    
+    // Démarrer quand la page est chargée
+    window.addEventListener('DOMContentLoaded', initNotifications);
+    
+    // Option: Lier à des pages spécifiques
+    function showPageSpecificNotification() {
+        if (window.location.pathname.includes('etancheite')) {
+            // Afficher une notification spéciale pour la page étanchéité
+            const specialNotif = document.createElement('div');
+            specialNotif.className = 'lm-notification top-right show';
+            specialNotif.innerHTML = `
+                <div class="lm-notification-icon">💧</div>
+                <div class="lm-notification-content">
+                    <div class="lm-notification-title">Expertise Étanchéité</div>
+                    <div class="lm-notification-message">Profitez de -15% sur nos solutions étanches ce mois-ci!</div>
+                </div>
+                <button class="lm-notification-close">&times;</button>
+            `;
+            document.body.appendChild(specialNotif);
+        }
+    }
+    
+    // Appeler cette fonction si vous voulez des notifications contextuelles
+    // window.addEventListener('DOMContentLoaded', showPageSpecificNotification);
+</script>
+
+</body>
+</html>
   
 
 
