@@ -486,6 +486,118 @@
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+		<!-- Free Tool Alert with Photo -->
+<div class="tool-alert">
+  <div class="alert-content">
+    <img src="img/your-tool-image.jpg" alt="Free Tool" class="alert-image">
+    <div class="alert-text">
+      <h4>✨ New Free Tool!</h4>
+      <p>Calculate <strong>Placoplâtre costs</strong> instantly with our new calculator</p>
+    </div>
+    <a href="https://example.com/tool" class="alert-button">Try Now</a>
+    <span class="alert-close">×</span>
+  </div>
+</div>
+
+<style>
+  /* Alert Notification Styles */
+  .tool-alert {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    z-index: 1000;
+    max-width: 350px;
+    animation: slideInUp 0.5s ease-out;
+    overflow: hidden;
+    border-left: 4px solid #2ecc71;
+  }
+
+  .alert-content {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 12px;
+  }
+
+  .alert-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .alert-text {
+    flex: 1;
+  }
+
+  .alert-text h4 {
+    margin: 0;
+    color: #2ecc71;
+    font-size: 16px;
+  }
+
+  .alert-text p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #555;
+  }
+
+  .alert-button {
+    background: #2ecc71;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    white-space: nowrap;
+    transition: 0.3s;
+  }
+
+  .alert-button:hover {
+    background: #27ae60;
+    transform: translateY(-2px);
+  }
+
+  .alert-close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #888;
+    padding: 5px;
+  }
+
+  @keyframes slideInUp {
+    from { transform: translateY(100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .tool-alert {
+      left: 20px;
+      right: 20px;
+      max-width: 100%;
+    }
+  }
+</style>
+
+<script>
+  // Show alert after 5 seconds
+  setTimeout(() => {
+    document.querySelector('.tool-alert').style.display = 'block';
+  }, 5000);
+
+  // Close functionality
+  document.querySelector('.alert-close').addEventListener('click', function() {
+    this.closest('.tool-alert').style.display = 'none';
+  });
+</script>
 
     </body>
 </html>
