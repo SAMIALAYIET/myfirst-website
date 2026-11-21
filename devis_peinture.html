@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="img/logo.png">
+<title>Devis Peinture Bâtiment Tunisie — La Maison Du Placoplâtre</title>
+<meta name="description" content="Estimez le prix de vos travaux de peinture intérieure, plafonds et façades en Tunisie. Devis rapide par WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--creme:#FBF8F3;--blanc:#fff;--noir:#1C1B18;--gris:#5F5A52;--ligne:#E8E2D8;--or:#B08D4A;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:Karla,sans-serif;color:var(--noir);background:var(--creme);line-height:1.75;padding:2rem 1rem}
+  .conteneur{max-width:960px;margin:0 auto}
+  h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,3.5rem);margin-bottom:.5rem}
+  h1 em{color:var(--or);font-style:italic}
+  .banner{width:100%;height:260px;object-fit:cover;border:1px solid var(--ligne);margin:1.5rem 0;display:block}
+  .calc{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:1.5rem;background:var(--blanc);padding:2.5rem;border:1px solid var(--ligne)}
+  label{display:block;font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gris);margin:1.15rem 0 .3rem}
+  input,select{width:100%;padding:.7rem;border:none;border-bottom:1px solid var(--noir);background:transparent;font-family:Karla;font-size:1rem}
+  input:focus,select:focus{outline:none;border-bottom-color:var(--or)}
+  .resultat{border:1px solid var(--ligne);background:var(--creme);padding:2.2rem}
+  .resultat h3{margin-bottom:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.5rem}
+  table.recap{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.9rem}
+  table.recap td{padding:.4rem 0;border-bottom:1px dotted var(--ligne)}
+  table.recap td:last-child{text-align:right;white-space:nowrap;color:var(--or);font-weight:500}
+  table.recap .total td{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--noir);border-top:1px solid var(--noir);border-bottom:none;padding-top:.9rem}
+  .note{font-size:.75rem;color:var(--gris);font-style:italic;margin-top:1rem}
+  .btn{display:block;text-align:center;padding:1rem 2.4rem;text-decoration:none;font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;transition:.3s;border:1px solid var(--noir);cursor:pointer;margin-top:1rem}
+  .btn-noir{background:var(--noir);color:var(--creme)}
+  .btn-noir:hover{background:transparent;color:var(--noir)}
+  .retour{display:inline-block;margin-bottom:1.5rem;color:var(--noir);text-decoration:none;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid var(--or)}
+  .galerie{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem}
+  .galerie figure{background:var(--blanc);border:1px solid var(--ligne);overflow:hidden}
+  .galerie img{width:100%;height:190px;object-fit:cover;display:block}
+  .galerie figcaption{padding:.8rem 1rem;font-size:.82rem;color:var(--gris);text-align:center}
+  @media(max-width:768px){.calc,.galerie{grid-template-columns:1fr}.banner{height:180px}}
+</style>
+</head>
+<body>
+<div class="conteneur">
+ <a class="retour" href="index.html">← Retour au site principal</a>
+ <h1>Devis en ligne — <em>Peinture Bâtiment</em></h1>
+ <p style="color:var(--gris);">Chiffrez vos travaux de peinture intérieure, plafonds et façades.</p>
+ <img class="banner" src="https://images.pexels.com/photos/6284230/pexels-photo-6284230.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Peinture bâtiment Tunisie">
+ <div class="calc">
+  <div>
+   <div><label for="p-surface">Surface (m²)</label><input type="number" id="p-surface" min="1" max="10000" step="0.5" value="40" inputmode="decimal"></div>
+   <div><label for="p-type">Type de peinture</label>
+    <select id="p-type">
+     <option value="peintureInterieure">Peinture Intérieure complète — 35 DT/m²</option>
+     <option value="peinturePlafond">Peinture Plafonds — 45 DT/m²</option>
+     <option value="peintureFacade">Peinture Façade extérieure — 60 DT/m²</option>
+    </select></div>
+   <div><label for="p-qualite">Gamme de finition</label>
+    <select id="p-qualite"><option value="1">Standard</option><option value="1.3">Premium (+30%)</option></select></div>
+  </div>
+  <div class="resultat">
+   <h3>Votre devis peinture</h3>
+   <table class="recap" id="p-table"></table>
+   <p class="note">TVA 19 % &amp; timbre fiscal (1 DT) inclus.</p>
+   <a class="btn btn-noir" id="p-wa" href="#" target="_blank" rel="noopener">Envoyer le devis via WhatsApp</a>
+  </div>
+ </div>
+ <div class="galerie">
+  <figure><img src="https://images.pexels.com/photos/6474308/pexels-photo-6474308.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Préparation support"><figcaption>Enduit lisse &amp; ponçage soigné</figcaption></figure>
+  <figure><img src="https://images.pexels.com/photos/1669799/pexels-photo-1669799.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Peinture intérieure"><figcaption>Finition mate, satinée ou velours</figcaption></figure>
+  <figure><img src="https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Rénovation salon"><figcaption>Rendu haut de gamme prêt à vivre</figcaption></figure>
+ </div>
+</div>
+<script>
+const CONFIG = {
+  identite: { nom: "La Maison Du Placoplâtre", whatsapp: "21622784561" },
+  taxes: { tva: 0.19, timbre: 1 }, // timbre fiscal : montant fixe en DT (mettre 0 pour le retirer)
+  prix: { peinture: { peintureInterieure: 35, peinturePlafond: 45, peintureFacade: 60 } }
+};
+const $ = id => document.getElementById(id);
+const fmt = n => (isFinite(n) ? n.toFixed(2).replace('.', ',') : '—') + ' DT';
+function calcPeinture() {
+  const s = parseFloat($('p-surface').value) || 40;
+  const qualite = parseFloat($('p-qualite').value) || 1;
+  const tarifUnit = CONFIG.prix.peinture[$('p-type').value] * qualite;
+  const ht = s * tarifUnit;
+  const tva = ht * CONFIG.taxes.tva;
+  const timbre = CONFIG.taxes.timbre;
+  const ttc = ht + tva + timbre;
+  const libPresta = $('p-type').selectedOptions[0].text;
+  let html = '<tr><td>' + libPresta + ' (' + s + ' m²)</td><td>' + fmt(ht) + '</td></tr>';
+  html += '<tr><td>Sous-total HT</td><td>' + fmt(ht) + '</td></tr><tr><td>TVA 19 %</td><td>' + fmt(tva) + '</td></tr><tr><td>Timbre fiscal</td><td>' + fmt(timbre) + '</td></tr><tr class="total"><td>TOTAL TTC</td><td>' + fmt(ttc) + '</td></tr>';
+  $('p-table').innerHTML = html;
+  const resume = 'Bonjour ' + CONFIG.identite.nom + ' ! Devis Peinture : ' + s + ' m² — ' + libPresta + '. Total estimé : ' + ttc.toFixed(2) + ' DT TTC.';
+  $('p-wa').href = 'https://wa.me/' + CONFIG.identite.whatsapp + '?text=' + encodeURIComponent(resume);
+}
+['p-surface','p-type','p-qualite'].forEach(id => $(id).addEventListener('input', calcPeinture));
+calcPeinture();
+</script>
+</body>
+</html>
