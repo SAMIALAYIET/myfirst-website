@@ -6,8 +6,8 @@
 <title>Plaque de Plâtre Tunisie — Prix Placoplâtre au m² & Pose BA13 | La Maison Du Placoplâtre</title>
 <meta name="description" content="Plaque de plâtre en Tunisie : prix placoplâtre au m² — cloison BA13 75 DT/m², plafond suspendu 50 DT/m², doublage 85 DT/m² — plus peinture et étanchéité. Devis gratuit à Ariana & Grand Tunis. ☎ +216 22 784 561.">
 <link rel="canonical" href="https://lamaisonduplacoplatre.com/">
-<link rel="icon" type="image/png" href="img/logo.png">
-<link rel="apple-touch-icon" href="img/logo.png">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
 
 <!-- Open Graph / WhatsApp / Facebook -->
 <meta property="og:type" content="website">
@@ -232,6 +232,24 @@ footer .copyright{max-width:1200px;margin:3rem auto 0;padding-top:1.5rem;border-
  section{padding:4rem 1.2rem}
  .modal-box{padding:2rem 1.4rem;max-height:90vh;overflow-y:auto}
 }
+
+/* ─── Carrousel de chantiers ─────────────────────────────────── */
+.carrousel{position:relative;max-width:1140px;margin:0 auto 3.2rem;border-radius:14px;overflow:hidden;aspect-ratio:16/8;box-shadow:0 18px 50px rgba(28,27,24,.14);background:#e8e2d8}
+.car-slide{position:absolute;inset:0;opacity:0;transition:opacity .9s ease}
+.car-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.car-slide.actif{opacity:1}
+.car-legende{position:absolute;left:0;right:0;bottom:0;padding:2.6rem 1.6rem 1rem;color:#fff;background:linear-gradient(transparent,rgba(28,27,24,.72));font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.05rem,2.2vw,1.45rem);opacity:0;transform:translateY(8px);transition:.6s .15s}
+.car-slide.actif .car-legende{opacity:1;transform:none}
+.car-fleche{position:absolute;top:50%;transform:translateY(-50%);width:2.6rem;height:2.6rem;border:none;border-radius:50%;background:rgba(251,248,243,.92);color:var(--noir);font-size:1.35rem;line-height:1;cursor:pointer;transition:.25s;z-index:2}
+.car-fleche:hover{background:var(--or);color:#fff}
+.car-fleche:focus-visible{outline:2px solid var(--or);outline-offset:2px}
+.car-prev{left:.8rem}
+.car-next{right:.8rem}
+.car-points{position:absolute;bottom:.55rem;left:50%;transform:translateX(-50%);display:flex;gap:.45rem;z-index:2}
+.car-points button{width:.55rem;height:.55rem;border-radius:50%;border:none;padding:0;background:rgba(251,248,243,.55);cursor:pointer;transition:.3s}
+.car-points button.actif{background:var(--or);transform:scale(1.25)}
+.car-points button:focus-visible{outline:1px solid #fff}
+@media(max-width:640px){.carrousel{aspect-ratio:4/3}.car-fleche{width:2.2rem;height:2.2rem}}
 </style>
 </head>
 <body>
@@ -299,7 +317,7 @@ footer .copyright{max-width:1200px;margin:3rem auto 0;padding-top:1.5rem;border-
  <button class="btn btn-noir" onclick="ouvrirPopupDevis()">Estimer mon devis gratuit</button>
  <a class="btn btn-ligne" href="#services">Découvrir nos services</a>
  <div class="hero-image">
-  <img src="img/murs3.jpg — chantier élégant" onerror="this.style.background='#e8e2d8';this.alt='Image indisponible'">
+  <img src="murs3.jpg" alt="Pose de plaque de plâtre Tunisie — chantier élégant" loading="eager" onerror="this.style.background='#e8e2d8';this.alt='Image indisponible'">
  </div>
  <div class="conteneur stats">
   <div class="stat"><div class="chiffre">2 min</div><div class="legende">Devis en ligne gratuit</div></div>
@@ -313,13 +331,26 @@ footer .copyright{max-width:1200px;margin:3rem auto 0;padding-top:1.5rem;border-
   <span class="sur-titre">Ce que nous faisons</span>
   <h2>Placoplâtre Tunisie : tout ce dont vos murs ont besoin.<br><em>Rien</em> dont vous devez vous soucier.</h2>
   <p class="sous-titre">Une pièce ou tout un logement — nous gérons chaque détail pour que votre espace fonctionne aussi bien qu'il paraît.</p>
+  <div class="carrousel apparait" id="carrousel" aria-roledescription="carrousel" aria-label="Photos de chantiers de placoplâtre en Tunisie">
+    <div class="car-slide actif"><img src="murs3.jpg" alt="Cloisons BA13 en cours de pose — chantier appartement" loading="eager"><div class="car-legende">Cloisons BA13 en cours de pose — chantier appartement</div></div>
+    <div class="car-slide"><img src="murs6.jpg" alt="Ossature métallique et plaques de plâtre" loading="lazy"><div class="car-legende">Ossature métallique et plaques de plâtre</div></div>
+    <div class="car-slide"><img src="murs2.jpg" alt="Bandes, enduit et finitions soignées" loading="lazy"><div class="car-legende">Bandes, enduit et finitions soignées</div></div>
+    <div class="car-slide"><img src="murs7.jpg" alt="Rénovation d'appartement — cloisons et passages" loading="lazy"><div class="car-legende">Rénovation d'appartement — cloisons et passages</div></div>
+    <div class="car-slide"><img src="murs9.jpg" alt="La pièce revit — préparation et cloisonnement" loading="lazy"><div class="car-legende">La pièce revit — préparation et cloisonnement</div></div>
+    <div class="car-slide"><img src="pro12.jpg" alt="Doublage et isolation thermique des murs" loading="lazy"><div class="car-legende">Doublage et isolation thermique des murs</div></div>
+    <div class="car-slide"><img src="pro13.jpg" alt="Isolation en laine minérale entre rails" loading="lazy"><div class="car-legende">Isolation en laine minérale entre rails</div></div>
+    <div class="car-slide"><img src="etancheite.jpg" alt="Étanchéité de terrasse — membrane bitumineuse" loading="lazy"><div class="car-legende">Étanchéité de terrasse — membrane bitumineuse</div></div>
+    <button type="button" class="car-fleche car-prev" id="car-prev" aria-label="Photo précédente">‹</button>
+    <button type="button" class="car-fleche car-next" id="car-next" aria-label="Photo suivante">›</button>
+    <div class="car-points" id="car-points"></div>
+  </div>
   <div class="grille-svc">
-   <a class="svc-carte apparait" href="devis_placo.html"><img src="img/murs6.jpg" loading="lazy" onerror="this.style.background='#e8e2d8'"><div class="txt"><h3>Cloisons BA13</h3><p>Cloisons sur ossature montants 48 ou 70 — standard, hydrofuge ou coupe-feu selon la pièce.</p><span class="mini-prix">75 DT/m² · Simuler →</span></div></a>
-   <a class="svc-carte apparait" href="devis_placo.html"><img src="img/pro18.jpg" loading="lazy" onerror="this.style.background='#e8e2d8'"><div class="txt"><h3>Plafonds suspendus</h3><p>Simple ou démontable : gaines cachées, lignes nettes, finition prête à peindre.</p><span class="mini-prix">50 – 65 DT/m² · Simuler →</span></div></a>
-   <a class="svc-carte apparait" href="devis_placo.html"><img src="img/pro12.jpg" loading="lazy" onerror="this.style.background='#e8e2d8'"><div class="txt"><h3>Doublage &amp; isolation</h3><p>Murs redressés, confort thermique et phonique immédiat, laine de verre intégrée.</p><span class="mini-prix">85 DT/m² · Simuler →</span></div></a>
-   <a class="svc-carte apparait" href="devis_placo.html"><img src="img/murs2.jpg" loading="lazy" onerror="this.style.background='#e8e2d8'"><div class="txt"><h3>Bandes &amp; finitions</h3><p>Bandes, enduit, ponçage : des surfaces impeccables, prêtes à recevoir la peinture.</p><span class="mini-prix">Inclus au chantier</span></div></a>
+   <a class="svc-carte apparait" href="devis_placo.html"><img src="murs6.jpg" alt="Cloisons plaque de plâtre Tunisie — ossature BA13" loading="lazy" onerror="this.style.background='#e8e2d8'"><div class="txt"><h3>Cloisons BA13</h3><p>Cloisons sur ossature montants 48 ou 70 — standard, hydrofuge ou coupe-feu selon la pièce.</p><span class="mini-prix">75 DT/m² · Simuler →</span></div></a>
+   <a class="svc-carte apparait" href="devis_placo.html"><img src="pro18.jpg" alt="Plafond suspendu placo Tunisie — ossature métallique" loading="lazy" onerror="this.style.background='#e8e2d8'"><div class="txt"><h3>Plafonds suspendus</h3><p>Simple ou démontable : gaines cachées, lignes nettes, finition prête à peindre.</p><span class="mini-prix">50 – 65 DT/m² · Simuler →</span></div></a>
+   <a class="svc-carte apparait" href="devis_placo.html"><img src="pro12.jpg" alt="Doublage isolant Tunisie — laine thermique" loading="lazy" onerror="this.style.background='#e8e2d8'"><div class="txt"><h3>Doublage &amp; isolation</h3><p>Murs redressés, confort thermique et phonique immédiat, laine de verre intégrée.</p><span class="mini-prix">85 DT/m² · Simuler →</span></div></a>
+   <a class="svc-carte apparait" href="devis_placo.html"><img src="murs2.jpg" alt="Bandes et finitions placoplâtre Tunisie" loading="lazy" onerror="this.style.background='#e8e2d8'"><div class="txt"><h3>Bandes &amp; finitions</h3><p>Bandes, enduit, ponçage : des surfaces impeccables, prêtes à recevoir la peinture.</p><span class="mini-prix">Inclus au chantier</span></div></a>
    <a class="svc-carte apparait" href="devis_peinture.html"><img src="https://images.pexels.com/photos/6284230/pexels-photo-6284230.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Peinture bâtiment Tunisie" loading="lazy" onerror="this.style.background='#e8e2d8'"><div class="txt"><h3>Peinture</h3><p>Intérieur complet 18–55, plafonds 25–70, façades 30–95 DT/m² — un seul interlocuteur après le placo.</p><span class="mini-prix">6 – 95 DT/m² · Simuler →</span></div></a>
-   <a class="svc-carte apparait" href="devis_etancheite.html"><img src="img/etancheite.jpg" alt="Étanchéité toiture terrasse Tunisie" loading="lazy" onerror="this.style.background='#e8e2d8'"><div class="txt"><h3>Étanchéité</h3><p>Toitures terrasses 40–200, murs 25–90, salles d'eau 35–95 DT/m². Diagnostic d'infiltration offert.</p><span class="mini-prix">25 – 240 DT/m² · Simuler →</span></div></a>
+   <a class="svc-carte apparait" href="devis_etancheite.html"><img src="etancheite.jpg" alt="Étanchéité toiture terrasse Tunisie" loading="lazy" onerror="this.style.background='#e8e2d8'"><div class="txt"><h3>Étanchéité</h3><p>Toitures terrasses 40–200, murs 25–90, salles d'eau 35–95 DT/m². Diagnostic d'infiltration offert.</p><span class="mini-prix">25 – 240 DT/m² · Simuler →</span></div></a>
   </div>
  </div>
 </section>
@@ -363,12 +394,12 @@ footer .copyright{max-width:1200px;margin:3rem auto 0;padding-top:1.5rem;border-
   <span class="sur-titre">Nos réalisations</span>
   <h2>Réalisations en plaque de plâtre BA13 —<br>des espaces qui font <em>soupirer</em> de satisfaction.</h2>
   <div class="grille-port">
-   <div class="port-carte apparait"><img src="img/murs4.jpg" loading="lazy" onerror="this.style.background='#e8e2d8'"><div class="txt"><h3>Cloison — chambre séparée</h3><div class="lieu">Ariana</div></div></div>
-   <div class="port-carte apparait"><img src="img/murs7.jpg" loading="lazy" onerror="this.style.background='#e8e2d8'"><div class="txt"><h3>Cloison hydrofuge</h3><div class="lieu">Grand Tunis</div></div></div>
-   <div class="port-carte apparait"><img src="img/murs9.jpg" loading="lazy" onerror="this.style.background='#e8e2d8'"><div class="txt"><h3>Plafond suspendu</h3><div class="lieu">Ariana</div></div></div>
+   <div class="port-carte apparait"><img src="murs4.jpg" alt="Cloison placo Ariana — chambre" loading="lazy" onerror="this.style.background='#e8e2d8'"><div class="txt"><h3>Cloison — chambre séparée</h3><div class="lieu">Ariana</div></div></div>
+   <div class="port-carte apparait"><img src="murs7.jpg" alt="Cloison hydrofuge Grand Tunis" loading="lazy" onerror="this.style.background='#e8e2d8'"><div class="txt"><h3>Cloison hydrofuge</h3><div class="lieu">Grand Tunis</div></div></div>
+   <div class="port-carte apparait"><img src="murs9.jpg" alt="Plafond suspendu Ariana" loading="lazy" onerror="this.style.background='#e8e2d8'"><div class="txt"><h3>Plafond suspendu</h3><div class="lieu">Ariana</div></div></div>
    <div class="port-carte apparait"><img src="https://images.pexels.com/photos/3614763/pexels-photo-3614763.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Plafond démontable bureau Tunisie" loading="lazy" onerror="this.style.background='#e8e2d8'"><div class="txt"><h3>Plafond démontable</h3><div class="lieu">Bureau, Tunis</div></div></div>
-   <div class="port-carte apparait"><img src="img/pro14.jpg" loading="lazy" onerror="this.style.background='#e8e2d8'"><div class="txt"><h3>Doublage isolé</h3><div class="lieu">Résidence, Ariana</div></div></div>
-   <div class="port-carte apparait"><img src="img/murs5.jpg" loading="lazy" onerror="this.style.background='#e8e2d8'"><div class="txt"><h3>Rénovation complète</h3><div class="lieu">Villa, Gammarth</div></div></div>
+   <div class="port-carte apparait"><img src="pro14.jpg" alt="Doublage isolé résidence Ariana" loading="lazy" onerror="this.style.background='#e8e2d8'"><div class="txt"><h3>Doublage isolé</h3><div class="lieu">Résidence, Ariana</div></div></div>
+   <div class="port-carte apparait"><img src="murs5.jpg" alt="Rénovation complète villa Tunisie" loading="lazy" onerror="this.style.background='#e8e2d8'"><div class="txt"><h3>Rénovation complète</h3><div class="lieu">Villa, Gammarth</div></div></div>
   </div>
  </div>
 </section>
@@ -423,8 +454,8 @@ footer .copyright{max-width:1200px;margin:3rem auto 0;padding-top:1.5rem;border-
     <p class="note" id="c-erreur" style="color:#B03A2E;display:none"></p>
    </div>
    <div class="carte">
-    <iframe title="Localisation — Ariana" src="https://maps.google.com/maps?q=21%20Rue%20Sanaa%2C%20Cit%C3%A9%20Ennasim%2C%20Borj%20Louzir%2C%20Ariana%2C%20Tunisie&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    <a class="btn btn-ligne" style="display:block;text-align:center;margin-top:1rem" href="https://www.google.com/maps/dir/?api=1&destination=21+Rue+Sanaa,+Cité+Ennasim,+Borj+Louzir,+Ariana,+Tunisie" target="_blank" rel="noopener">Ouvrir l'itinéraire</a>
+    <iframe title="Localisation — Ariana" src="https://maps.google.com/maps?q=La+Maison+Du+Placoplatre,+21+Rue+Sanaa,+Cit%C3%A9+Ennasim,+Borj+Louzir,+Ariana,+Tunisie&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <a class="btn btn-ligne" style="display:block;text-align:center;margin-top:1rem" href="https://www.google.com/maps/search/?api=1&query=La+Maison+Du+Placoplatre,+21+Rue+Sanaa,+Cit%C3%A9+Ennasim,+Borj+Louzir,+Ariana,+Tunisie" target="_blank" rel="noopener" aria-label="Ouvrir la fiche Google de La Maison Du Placoplatre (avis, photos, itinéraire)">Ouvrir l'itinéraire</a>
    </div>
   </div>
  </div>
@@ -627,6 +658,44 @@ const obs = new IntersectionObserver(
   { threshold: .1 }
 );
 document.querySelectorAll('.apparait').forEach(el => obs.observe(el));
+
+/* ─── Carrousel de chantiers ─────────────────────────────────── */
+(function(){
+  const car = $('carrousel');
+  if(!car) return;
+  const slides = car.querySelectorAll('.car-slide');
+  const points = $('car-points');
+  let idx = 0, timer = null;
+  const REDUIT = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  slides.forEach((s, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Voir la photo ' + (i + 1) + ' : ' + s.querySelector('img').alt);
+    if(i === 0) b.classList.add('actif');
+    b.onclick = () => aller(i);
+    points.appendChild(b);
+  });
+  function aller(i){
+    idx = (i + slides.length) % slides.length;
+    slides.forEach((s, j) => s.classList.toggle('actif', j === idx));
+    points.querySelectorAll('button').forEach((b, j) => b.classList.toggle('actif', j === idx));
+  }
+  function auto(){ if(!REDUIT) timer = setInterval(() => aller(idx + 1), 4500); }
+  function relancer(){ clearInterval(timer); auto(); }
+  $('car-prev').onclick = () => { aller(idx - 1); relancer(); };
+  $('car-next').onclick = () => { aller(idx + 1); relancer(); };
+  car.addEventListener('mouseenter', () => clearInterval(timer));
+  car.addEventListener('mouseleave', relancer);
+  let x0 = null;
+  car.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; clearInterval(timer); }, {passive:true});
+  car.addEventListener('touchend', e => {
+    if(x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if(Math.abs(dx) > 40) aller(idx + (dx < 0 ? 1 : -1));
+    x0 = null; relancer();
+  }, {passive:true});
+  auto();
+})();
 </script>
 </body>
 </html>
